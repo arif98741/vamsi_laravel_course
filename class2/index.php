@@ -1,42 +1,55 @@
 <?php
-   function makeFile($dir,$file){
-
-        if(file_exists($dir)){ //check folder existance
-            $file = fopen($dir."/".$file, "w");
-        }else{
-            echo 'Path is not exist';
-        }
-    }
-
-    makeFile('test1','def.mp3');
     
+    //
+    /*
+    access modifiers
+        public, private, protected
+    */
+    class Car{
 
-    function getFiles($dir){
+        public $name;
+        private $company;
+        public $model;
+        public $fuel;
+        
 
-        if(!file_exists($dir)){ //check folder existance
-            echo 'Path is not exist';
-        }else{
-            $files = scandir($dir);
-            return $files;
-        }
-
-    }
-
-    $files = getFiles('test1');
-    for($i=0; $i< count($files); $i++)
-    {
-        //echo $files[$i];
-        $file_explode = explode('.',$files[$i]);
-        $file_type = end($file_explode);
-        $file_types = [
-            'jpg','JPG','jpeg','JPEG','PNG','png','GIF','gif'
-        ];
-        if(in_array($file_type,$file_types))
+        public function __construct($name,$company,$model,$fuel)
         {
-            echo '<img src="test1/'.$files[$i].'">';
+           $this->name = $name;
+           $this->company = $company;
+           $this->model = $model;
+           $this->fuel = $fuel;
+           
+           
         }
+
+        public function details()
+        {
+            echo 'Car name '.$this->name;
+            echo '<br>';
+            echo 'Car company is '.$this->company;
+            echo '<br>';
+            echo 'Car company is '.$this->model;
+        }
+
+        public function drive($hour)
+        {
+            $cost  = $hour * 3;
+            $this->fuel -= $cost;
+            
+        }
+
+        
+        public function status()
+        {
+            echo "Current fuel is ".$this->fuel.' liter';
+        }
+
     }
 
+    $car = new Car('BMW 45H','BMW','K6566',10);
+    $car->drive(3);
+    print_r($car->status());
+   
 
-    
 ?>
