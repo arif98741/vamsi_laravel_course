@@ -12,15 +12,13 @@
         public $model;
         public $fuel;
         
-
         public function __construct($name,$company,$model,$fuel)
         {
            $this->name = $name;
            $this->company = $company;
            $this->model = $model;
            $this->fuel = $fuel;
-           
-           
+        
         }
 
         public function details()
@@ -39,7 +37,6 @@
             
         }
 
-        
         public function status()
         {
             echo "Current fuel is ".$this->fuel.' liter';
@@ -50,6 +47,5 @@
     $car = new Car('BMW 45H','BMW','K6566',10);
     $car->drive(3);
     print_r($car->status());
-   
 
 ?>
